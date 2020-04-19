@@ -1,6 +1,6 @@
 # Aldwinium Framewrok
 
-A simple selenium framework. This is just a hobby project to test things out. Based the name on [Winium](https://github.com/2gis/Winium) and ofcourse my First name, thought it was funny LOL.
+A simple selenium framework. This is just a hobby project to test things out. Based the name on [Winium](https://github.com/2gis/Winium) and ofcourse my First name, thought it was funny LOL. README.md is WIP.
 
 ## Getting Started
 
