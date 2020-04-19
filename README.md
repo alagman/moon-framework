@@ -1,6 +1,6 @@
-# Project Title
+# Aldwinium Framewrok
 
-One Paragraph of project description goes here
+A simple selenium framework. This is just a hobby project to test things out. Based the name on [Winium](https://github.com/2gis/Winium) and ofcourse my First name, thought it was funny LOL.
 
 ## Getting Started
 
@@ -58,9 +58,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Java](https://www.oracle.com/java/) - 
+* [Selenium](https://www.selenium.dev/) - 
 
 ## Contributing
 
