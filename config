@@ -1,4 +1,4 @@
-browser = chrome
+browser = edge
 url = https://www.google.com/
 testbed = local
 grid_ip =

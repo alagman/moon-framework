@@ -4,6 +4,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +21,7 @@ public class Driver {
     }
 
     public WebDriver setupDriver() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.edgedriver().setup();
         ConfigReader configReader = new ConfigReader();
         String browser = configReader.getBrowser();//get this from config file
 
@@ -31,6 +33,15 @@ public class Driver {
             chromeOptions.setAcceptInsecureCerts(true);
             webDriver = new ChromeDriver(chromeOptions);
         }
+
+        if (browser.equalsIgnoreCase("edge")) {
+            //            dc.setCapability("acceptInsecureCerts", true);
+            //            dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
+            //            webDriver = new ChromeDriver(dc);
+                        EdgeOptions edgeOptions = new EdgeOptions();
+                        // edgeOptions.setAcceptInsecureCerts(true);
+                        webDriver = new EdgeDriver(edgeOptions);
+                    }
 
         return webDriver;
     }
