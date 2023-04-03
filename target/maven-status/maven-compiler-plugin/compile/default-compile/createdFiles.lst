@@ -1,9 +1,0 @@
-utils\BaseTest.class
-utils\Reporter.class
-utils\Driver.class
-utils\Steps.class
-utils\ConfigReader.class
-utils\Steps$2.class
-utils\Steps$1.class
-utils\ConfigReader$1.class
-PageFactory\GoogleHomePage.class
