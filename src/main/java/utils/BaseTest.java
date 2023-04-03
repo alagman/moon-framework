@@ -4,11 +4,13 @@ import static utils.Driver.webDriver;
 import org.testng.annotations.*;
 
 
+
 public class BaseTest {
+    
 
     @BeforeClass
     public void setupClass() {
-
+        Reporter.extentReports.attachReporter(Reporter.spark);
     }
 
     @BeforeMethod
@@ -30,5 +32,11 @@ public class BaseTest {
     public void afterTest() {
         webDriver.close();//closes the browser
         webDriver.quit();//closes the webdriver and browser as well
+        
+    }
+
+    @AfterClass
+    public void AfterClass() {
+        Reporter.extentReports.flush();
     }
 }

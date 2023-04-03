@@ -3,13 +3,17 @@ package tests.examples;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
+
 import PageFactory.GoogleHomePage;
 import utils.BaseTest;
+import utils.Reporter;
 import utils.Steps;
 import static utils.Driver.webDriver;
 
+
 public class GoogleTest extends BaseTest {
     Steps step = new Steps();
+    
 
     /**
      * Example of code using page factory
@@ -37,4 +41,22 @@ public class GoogleTest extends BaseTest {
         step.click(webDriver.findElement(By.xpath("(//h3)[1]")));
 
     }
+
+    /**
+     * Testing extent report
+     */
+     
+    @Test
+    public void TC01() {
+        String currentMethodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        Reporter.extentTest = Reporter.extentReports.createTest(currentMethodName);
+        
+        GoogleHomePage googleHomePage = new GoogleHomePage(webDriver);
+        
+        step.launchBrowser();
+        step.sendKeys(googleHomePage.txtboxSearch, "extent report");
+        step.click(googleHomePage.btnSearch);
+    }
+
+
 }
