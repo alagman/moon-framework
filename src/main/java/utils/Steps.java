@@ -15,6 +15,10 @@ import com.aventstack.extentreports.Status;
 import static utils.Driver.timeOut;
 import static utils.Driver.webDriver;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Steps {
     ConfigReader configReader = new ConfigReader();
     Logger logger = LoggerFactory.getLogger(new Object() {
@@ -213,6 +217,14 @@ public class Steps {
             reporter.logReport(Status.FAIL, e.getMessage());
         }
         return elementText;
+    }
+
+    public String getCurrentDateTime(String format) {
+        String dateTime = "";
+        DateFormat dateFormat = new SimpleDateFormat(format);
+        Date date = new Date();
+        dateTime = dateFormat.format(date);
+        return dateTime;
     }
 
 }

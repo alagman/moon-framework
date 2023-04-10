@@ -41,7 +41,12 @@ public class GoogleTest extends BaseTest {
         step.sendKeys(webDriver.findElement(By.xpath("//*[@name='q']")), "aldwin lagman linkedin");
         step.click(webDriver.findElement(By.xpath(" (//*[@name='btnK'])[last()]")));
         step.click(webDriver.findElement(By.xpath("(//h3)[1]")));
-
+        try {
+            Thread.sleep(5000);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /**

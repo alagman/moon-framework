@@ -23,25 +23,22 @@ public class Driver {
     public WebDriver setupDriver() {
         WebDriverManager.edgedriver().setup();
         ConfigReader configReader = new ConfigReader();
-        String browser = configReader.getBrowser();//get this from config file
+        String browser = configReader.getBrowser();// get this from config file
 
         if (browser.equalsIgnoreCase("chrome")) {
-//            dc.setCapability("acceptInsecureCerts", true);
-//            dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
-//            webDriver = new ChromeDriver(dc);
+            // dc.setCapability("acceptInsecureCerts", true);
+            // dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
+            // UnexpectedAlertBehaviour.ACCEPT);
+            // webDriver = new ChromeDriver(dc);
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setAcceptInsecureCerts(true);
             webDriver = new ChromeDriver(chromeOptions);
         }
 
         if (browser.equalsIgnoreCase("edge")) {
-            //            dc.setCapability("acceptInsecureCerts", true);
-            //            dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
-            //            webDriver = new ChromeDriver(dc);
-                        EdgeOptions edgeOptions = new EdgeOptions();
-                        // edgeOptions.setAcceptInsecureCerts(true);
-                        webDriver = new EdgeDriver(edgeOptions);
-                    }
+            EdgeOptions edgeOptions = new EdgeOptions();
+            webDriver = new EdgeDriver(edgeOptions);
+        }
 
         return webDriver;
     }

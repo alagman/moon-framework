@@ -7,7 +7,7 @@ public class BaseTest {
 
     @BeforeClass
     public void setupClass() {
-        Reporter.extentReports.attachReporter(Reporter.spark);
+        new Reporter().attachReporter();
     }
 
     @BeforeMethod
@@ -47,7 +47,7 @@ public class BaseTest {
 
     @AfterClass
     public void AfterClass() {
-        Reporter.extentReports.flush();
+        new Reporter().flushReport();
         // webDriver.quit();
     }
 }
