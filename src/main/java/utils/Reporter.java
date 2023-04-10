@@ -13,6 +13,8 @@ public class Reporter{
 
     public void logReport(Status status, String details){
         extentTest.log(status, details);
+        //TODO add screenshots
+        
         
     }
 }

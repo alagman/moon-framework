@@ -1,6 +1,9 @@
 package utils;
 
 import static utils.Driver.webDriver;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 
@@ -21,6 +24,11 @@ public class BaseTest {
     @BeforeTest
     public void beforeTest() {
         new Driver();//initializes the driver
+        System.out.println("this is my driver"+webDriver.toString());
+        
+        
+
+        
     }
 
     @AfterMethod
@@ -30,13 +38,26 @@ public class BaseTest {
 
     @AfterTest
     public void afterTest() {
-        webDriver.close();//closes the browser
-        webDriver.quit();//closes the webdriver and browser as well
+        //needs wait
+        try {
+            // Thread.sleep(5000);
+            webDriver.close();//closes the browser
+            webDriver.quit();//closes the webdriver and browser as well
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        // new Steps().waitForLoad();
+
+        // webDriver.close();//closes the browser
+        // webDriver.quit();//closes the webdriver and browser as well
         
+       
     }
 
     @AfterClass
     public void AfterClass() {
         Reporter.extentReports.flush();
+        // webDriver.quit();
     }
 }

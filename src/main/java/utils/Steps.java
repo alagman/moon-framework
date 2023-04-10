@@ -3,44 +3,25 @@ package utils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
 import static utils.Driver.timeOut;
 import static utils.Driver.webDriver;
 
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class Steps {
     ConfigReader configReader = new ConfigReader();
     Logger logger = LoggerFactory.getLogger(new Object() {
     }.getClass().getEnclosingClass().getSimpleName());
     Reporter reporter = new Reporter();
-    // ExtentReports extent = new ExtentReports();
-    
-
-    // public Steps(){
-    //     String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName();
-    //     ExtentTest test = extent.createTest(callerMethod);
-        
-    //     System.out.println(callerMethod);
-    //     test.log(Status.PASS,"this is a detail");
-        
-        
-    // }
-
-    // public void logReport(){
-    //     reporter.createReport().test
-    // }
-
 
     /**
      * Waits the element until it is visible while ignoring StaleElement
@@ -48,8 +29,14 @@ public class Steps {
      * @param webElement webElement that needs waiting
      */
     public void waitElement(WebElement webElement) {
+        waitForPageLoad();
         new WebDriverWait(webDriver, timeOut).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOf(webElement));
         scrollIntoView(webElement);
+    }
+
+    void waitForPageLoad() {
+        new WebDriverWait(webDriver, timeOut).until((ExpectedCondition<Boolean>) wd ->
+                ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
     }
 
     /**

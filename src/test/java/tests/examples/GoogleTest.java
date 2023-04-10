@@ -19,7 +19,9 @@ public class GoogleTest extends BaseTest {
      * Example of code using page factory
      */
     @Test
-    public void whatsMyIp() {
+    public void TC03WhatsMyIp() {
+        String currentMethodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        Reporter.extentTest = Reporter.extentReports.createTest(currentMethodName);
         
         GoogleHomePage googleHomePage = new GoogleHomePage(webDriver);
 
@@ -34,9 +36,13 @@ public class GoogleTest extends BaseTest {
      * Example of code using findElement
      */
     @Test
-    public void searchMyName() {
+    public void TC02SearchMyName() {
+        String currentMethodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        Reporter.extentTest = Reporter.extentReports.createTest(currentMethodName);
+
+
         step.launchBrowser();
-        step.sendKeys(webDriver.findElement(By.xpath("//*[@name='q']")), "aldwin lagman");
+        step.sendKeys(webDriver.findElement(By.xpath("//*[@name='q']")), "aldwin lagman linkedin");
         step.click(webDriver.findElement(By.xpath(" (//*[@name='btnK'])[last()]")));
         step.click(webDriver.findElement(By.xpath("(//h3)[1]")));
 
@@ -47,7 +53,7 @@ public class GoogleTest extends BaseTest {
      */
      
     @Test
-    public void TC01() {
+    public void TC01SearchExtentReport() {
         String currentMethodName = Thread.currentThread().getStackTrace()[1].getMethodName();
         Reporter.extentTest = Reporter.extentReports.createTest(currentMethodName);
         
