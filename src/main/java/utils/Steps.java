@@ -15,8 +15,6 @@ import com.aventstack.extentreports.Status;
 import static utils.Driver.timeOut;
 import static utils.Driver.webDriver;
 
-
-
 public class Steps {
     ConfigReader configReader = new ConfigReader();
     Logger logger = LoggerFactory.getLogger(new Object() {
@@ -30,17 +28,19 @@ public class Steps {
      */
     public void waitElement(WebElement webElement) {
         waitForPageLoad();
-        new WebDriverWait(webDriver, timeOut).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOf(webElement));
+        new WebDriverWait(webDriver, timeOut).ignoring(StaleElementReferenceException.class)
+                .until(ExpectedConditions.visibilityOf(webElement));
         scrollIntoView(webElement);
     }
 
     void waitForPageLoad() {
-        new WebDriverWait(webDriver, timeOut).until((ExpectedCondition<Boolean>) wd ->
-                ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+        new WebDriverWait(webDriver, timeOut).until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
+                .executeScript("return document.readyState").equals("complete"));
     }
 
     /**
-     * scrolls the webElement into view. Scrolling function depends on the current browser
+     * scrolls the webElement into view. Scrolling function depends on the current
+     * browser
      *
      * @param webElement webElement to be scrolled into
      */
@@ -123,35 +123,38 @@ public class Steps {
     public void launchBrowser() {
         String url = configReader.getURL();
         String debugString = "Navigated to " + url;
-        try{
+        try {
             webDriver.get(url);
             logger.debug(debugString);
-            // String callerMethod = Thread.currentThread().getStackTrace()[2].getMethodName(); //this gets the method name of the method that called this method.
+            // String callerMethod =
+            // Thread.currentThread().getStackTrace()[2].getMethodName(); //this gets the
+            // method name of the method that called this method.
             // reporter.createReport(Status.PASS, callerMethod, debugString);
             reporter.logReport(Status.PASS, debugString);
-        }catch(Exception e){
+        } catch (Exception e) {
             reporter.logReport(Status.FAIL, e.getMessage());
         }
-        
+
     }
 
     /**
      * Clicks the provided webElement
+     * 
      * @param webElement the element to be clicked
      */
     public void click(WebElement webElement) {
         String debugString;
-        try{
+        try {
             waitElement(webElement);
             String elementName = getElementName(webElement);
             debugString = "Clicked " + "'" + elementName + "'";
             webElement.click();
             logger.debug(debugString);
             reporter.logReport(Status.PASS, debugString);
-        }catch(Exception e){
+        } catch (Exception e) {
             reporter.logReport(Status.FAIL, e.getMessage());
         }
-        
+
     }
 
     /**
@@ -162,18 +165,17 @@ public class Steps {
      */
     public void sendKeys(WebElement webElement, String keys) {
         String debugString;
-        try{
+        try {
             waitElement(webElement);
             String elementName = getElementName(webElement);
             webElement.sendKeys(keys);
             debugString = "Entered " + "'" + keys + "'" + " on " + "'" + elementName + "' text box";
             logger.debug(debugString);
             reporter.logReport(Status.PASS, debugString);
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             reporter.logReport(Status.FAIL, e.getMessage());
         }
-        
+
     }
 
     /**
@@ -184,15 +186,14 @@ public class Steps {
      */
     public void select(WebElement webElement, String option) {
         String debugString;
-        try{
+        try {
             waitElement(webElement);
             String elementName = getElementName(webElement);
             Select select = new Select(webElement);
             select.selectByVisibleText(option);
             debugString = "Selected " + "'" + option + "'" + " on " + "'" + elementName + "' dropdown box";
             logger.debug(debugString);
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             reporter.logReport(Status.FAIL, e.getMessage());
         }
     }
@@ -201,15 +202,14 @@ public class Steps {
         String debugString;
         String elementName;
         String elementText = "";
-        try{
+        try {
             waitElement(webElement);
             elementName = getElementName(webElement);
             elementText = webElement.getText();
-            debugString = "Text on " + "'" + elementName + "' is "+elementText;
+            debugString = "Text on " + "'" + elementName + "' is " + elementText;
             logger.debug(debugString);
-            
-        }catch(Exception e)
-        {
+
+        } catch (Exception e) {
             reporter.logReport(Status.FAIL, e.getMessage());
         }
         return elementText;
