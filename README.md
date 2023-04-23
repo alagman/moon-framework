@@ -72,7 +72,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Aldwin Lagman** - *Initial work* - [Aldwinium](https://github.com/alagman/moon-framework)
+* **Aldwin Lagman** - *Initial work* - [Moon Framework](https://github.com/alagman/moon-framework)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
