@@ -1,6 +1,6 @@
 # Moon Test Automation Framework
 
-A simple selenium framework. This is just a hobby project to test things out. Since Selenium webdriver is used in this project, which derived its name from the chemical element Selenium, I derived my framework's name from the origin of Selenium element which is from the Greek Goddes of the Moon, Selene. **README.md** is WIP.
+A simple selenium framework. This is just a hobby project to test things out. Since Selenium webdriver is used in this project, which derived its name from the chemical element Selenium, I derived my framework's name from the origin of Selenium element which is from the Greek Goddess of the Moon, Selene. **README.md** is WIP.
 
 ## Getting Started
 
@@ -72,7 +72,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Aldwin Lagman** - *Initial work* - [Aldwinium](https://github.com/alagman/aldwinium)
+* **Aldwin Lagman** - *Initial work* - [Aldwinium](https://github.com/alagman/moon-framework)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
