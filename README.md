@@ -1,6 +1,6 @@
 # Moon Test Automation Framework
 
-A simple selenium framework. This is just a hobby project to test things out. Since Selenium webdriver is used in this project, which derived its name from the chemical element Selenium, I derived my framework's name from the origin of Selenium element which is from the Greek Goddess of the Moon, Selene. **README.md** is WIP.
+Just a hobby project to test things out. Built with Selenium WebDriver and Java. **README.md** is WIP.
 
 ## Getting Started
 
