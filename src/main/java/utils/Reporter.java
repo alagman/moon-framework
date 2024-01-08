@@ -24,17 +24,24 @@ public class Reporter {
     public static ExtentTest extentTest;
 
     public void logReport(Status status, String details) {
-        // String base64Code = captureScreenshot();
-        // extentTest.log(status, details, MediaEntityBuilder.createScreenCaptureFromBase64String(base64Code).build());
+        String base64Code = captureScreenshot();
+        extentTest.log(status, details, MediaEntityBuilder.createScreenCaptureFromBase64String(base64Code).build());
         
-        String path = captureScreenshot("test");
-        extentTest.log(status, details, MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+        // String path = captureScreenshot("SC");
+        // extentTest.log(status, details, MediaEntityBuilder.createScreenCaptureFromPath(path).build());
     }
 
     public void attachReporter() {
         String currentDateTime = getCurrentDateTime("yyyyMMdd_HHmm");
         ExtentSparkReporter spark = new ExtentSparkReporter(
                 "target/ExtentReports/Report/Spark_" + currentDateTime + ".html");
+
+        try {
+            spark.loadXMLConfig(".\\src\\main\\resources\\spark-config.xml");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         extentReports.attachReporter(spark);
 
     }
@@ -55,7 +62,7 @@ public class Reporter {
         String currentDateTime = getCurrentDateTime("yyyyMMdd_HHmmssSS");    
         TakesScreenshot takesScreenshot = (TakesScreenshot) webDriver;
         File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        File destFile = new File ("target/Screenshots/SC_"+fileName+currentDateTime+".jpg");
+        File destFile = new File ("target/Screenshots/"+fileName+"_"+currentDateTime+".jpg");
         try {
             FileUtils.copyFile(sourceFile, destFile);
         } catch (IOException e) {
