@@ -29,8 +29,6 @@ public class Reporter {
         
         String path = captureScreenshot("test");
         extentTest.log(status, details, MediaEntityBuilder.createScreenCaptureFromPath(path).build());
-
-
     }
 
     public void attachReporter() {
@@ -54,7 +52,7 @@ public class Reporter {
     }
 
     public String captureScreenshot(String fileName) {
-        String currentDateTime = getCurrentDateTime("yyyyMMdd_HHmmss");    
+        String currentDateTime = getCurrentDateTime("yyyyMMdd_HHmmssSS");    
         TakesScreenshot takesScreenshot = (TakesScreenshot) webDriver;
         File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
         File destFile = new File ("target/Screenshots/SC_"+fileName+currentDateTime+".jpg");
